@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}Home | MySite{% endblock %}
+
+{% block content %}
+<section class="home-hero">
+  <div class="home-container">
+    <h1>Welcome to <span class="highlight">MySite</span></h1>
+    {% if user.is_authenticated %}
+      <p>Hello, <strong>{{ user.username }}</strong>! You're logged in.</p>
+      <a href="{% url 'logout' %}" class="btn">Logout</a>
+    {% else %}
+      <p>Create an account or log in to get started.</p>
+      <a href="{% url 'register' %}" class="btn">Register</a>
+      <a href="{% url 'login' %}" class="btn-outline">Login</a>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  /* HOME PAGE STYLING */
+.home-hero {
+  background: linear-gradient(to right, #3b82f6, #60a5fa);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.home-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.home-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.home-hero .highlight {
+  color: #fff59d;
+}
+
+.home-hero p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+}
+
+.btn, .btn-outline {
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin: 0 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.btn {
+  background-color: #ffffff;
+  color: #1e3a8a;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: #f3f4f6;
+}
+
+.btn-outline {
+  border: 2px solid white;
+  color: white;
+}
+
+.btn-outline:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+</style>
+{% endblock %}

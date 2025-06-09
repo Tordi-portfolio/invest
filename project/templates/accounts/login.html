@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+
+{% block title %}Login | MySite{% endblock %}
+
+{% block content %}
+
+<style>
+  /* Login/registration form container */
+.auth-section {
+  max-width: 420px;
+  margin: 60px auto;
+  background: white;
+  padding: 40px 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* Headline */
+.auth-section h2 {
+  margin-bottom: 30px;
+  color: #1e40af;
+  font-size: 28px;
+}
+
+/* Form layout */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+
+/* Labels */
+.form-group label {
+  font-weight: 600;
+  color: #1e40af;
+  margin-bottom: 6px;
+}
+
+/* Input fields */
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 2px solid #cbd5e1;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 6px #2563eb88;
+}
+
+/* Submit button */
+.btn {
+  background-color: #2563eb;
+  color: white;
+  font-weight: 700;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 17px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #1d4ed8;
+}
+
+/* Footer */
+.auth-footer {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.auth-footer a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Password wrapper and toggle */
+.password-wrapper {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 37px;
+  font-size: 14px;
+  color: #2563eb;
+  cursor: pointer;
+  font-weight: 600;
+  user-select: none;
+}
+
+</style>
+
+<section class="auth-section">
+  <h2>Login</h2>
+  <form method="POST" class="auth-form">
+    {% csrf_token %}
+    
+    <div class="form-group">
+      <label for="id_username">Username</label>
+      <input type="text" name="username" id="id_username" placeholder="Enter your username" required>
+    </div>
+
+    <div class="form-group password-wrapper">
+      <label for="id_password">Password</label>
+      <input type="password" name="password" id="id_password" placeholder="Enter your password" required>
+      <span class="toggle-password" onclick="togglePassword('id_password', this)">Show</span>
+    </div>
+
+    <button type="submit" class="btn">Login</button>
+  </form>
+  <p class="auth-footer">
+    Don't have an account? <a href="{% url 'register' %}">Register here</a>.
+  </p>
+</section>
+
+<script>
+  function togglePassword(fieldId, toggleBtn) {
+    const input = document.getElementById(fieldId);
+    if (input.type === "password") {
+      input.type = "text";
+      toggleBtn.textContent = "Hide";
+    } else {
+      input.type = "password";
+      toggleBtn.textContent = "Show";
+    }
+  }
+</script>
+{% endblock %}
