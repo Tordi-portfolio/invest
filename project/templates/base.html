@@ -16,6 +16,7 @@
       <div class="menu-toggle" onclick="toggleNav()">☰</div>
       <ul class="nav-links" id="navLinks">
         <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'scrape_quotes' %}">quotes</a></li>
         {% if user.is_authenticated %}
           <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
           <li><a href="#">Hi, {{ user.username }}</a></li>

@@ -10,6 +10,18 @@
     {{ form.non_field_errors }}
 
     <div class="form-group">
+      {{ form.first_name.label_tag }}
+      {{ form.first_name }}
+      <div class="field-error">{{ form.first_name.errors }}</div>
+    </div>
+
+    <div class="form-group">
+      {{ form.last_name.label_tag }}
+      {{ form.last_name }}
+      <div class="field-error">{{ form.last_name.errors }}</div>
+    </div>
+
+    <div class="form-group">
       {{ form.username.label_tag }}
       {{ form.username }}
       <div class="field-error">{{ form.username.errors }}</div>

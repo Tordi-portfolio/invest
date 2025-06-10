@@ -1,0 +1,33 @@
+<!-- scraper_app/templates/scraper_app/quotes.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scraped Quotes</title>
+</head>
+<body>
+    <h1>Quotes from Website</h1>
+
+    {% if quotes %}
+        {% for quote in quotes %}
+            <blockquote>
+                <p>{{ quote.text }}</p>
+                <footer>- {{ quote.author }}</footer>
+            </blockquote>
+        {% endfor %}
+    {% elif error %}
+        <p>{{ error }}</p>
+    {% endif %}
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scraped Price</title>
+</head>
+<body>
+    <h1>Scraped Coin Price</h1>
+    <p>Current Price: {{ price }}</p>
+</body>
+</html>
